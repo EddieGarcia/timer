@@ -1,19 +1,45 @@
-<div>
-    Live time <span id="live-time"></span></br>
-    Countdown <span id="countdown"></span></br>
-</div>
-<div>
-    <div style="float: left; padding: 20px 20px 20px 20px">
-        Service in <span id="service-in"></span>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Timer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <script src="timer.js" defer></script>
+  </head>
+  <body>
+    <div id="app">
+        <div id="current-time"></div>
+        <div id="countdown"></div>
+        <div id="service-time">
+            <div id="service-in-container">
+                <div class="label">Service in</div>
+                <div class="buttons" style="display: flex;">
+                    <div onclick="adjustServiceInH(1)" style="width: 50%"><img style="width: 1em" src="./assets/TriangleArrow-Up.svg" alt="up"/></div>
+                    <div onclick="adjustServiceInM(1)" style="width: 50%"><img style="width: 1em" src="./assets/TriangleArrow-Up.svg" alt="up"/></div>
+                </div>
+                <div id="service-in" class="value"></div>
+                <div class="buttons" style="display: flex;">
+                    <div onclick="adjustServiceInH(-1)" style="width: 50%"><img style="width: 1em; transform: rotate(180deg);" src="./assets/TriangleArrow-Up.svg" alt="down"/></div>
+                    <div onclick="adjustServiceInM(-1)" style="width: 50%"><img style="width: 1em; transform: rotate(180deg);" src="./assets/TriangleArrow-Up.svg" alt="down"/></div>
+                </div>
+            </div>
+            <div id="target-time-container">
+                <div class="label">Target time </div>
+                <div class="buttons" style="display: flex;">
+                    <div onclick="adjustTargetTime(10)" style="width: 50%"><img style="width: 1em" src="./assets/TriangleArrow-Up.svg" alt="up"/></div>
+                    <div onclick="adjustTargetTime(1)" style="width: 50%"><img style="width: 1em" src="./assets/TriangleArrow-Up.svg" alt="up"/></div>
+                </div>
+                <div id="target-time" class="value"></div>
+                <div class="buttons" style="display: flex;">
+                    <div onclick="adjustTargetTime(-10)" style="width: 50%"><img style="width: 1em;transform: rotate(180deg);" src="./assets/TriangleArrow-Up.svg" alt="down"/></div>
+                    <div onclick="adjustTargetTime(-1)" style="width: 50%"><img style="width: 1em;transform: rotate(180deg);" src="./assets/TriangleArrow-Up.svg" alt="down"/></div>
+                </div>
+            </div>
+            <div id="service-out-container">
+                <div class="label">Service out</div>
+                <div id="service-out" class="value"></div>
+            </div>
+        </div>
     </div>
-    <div style="float: left; padding: 20px 20px 20px 20px">
-        <button onclick="increment()">UP</button>
-        Target time <span id="target-time"></span>
-        <button onclick="decrement()">DOWN</button>
-    </div>
-    <div style="float: left; padding: 20px 20px 20px 20px">
-        Service out <span id="service-out"></span>
-    </div>
-</div>
-
-<script src="./timer.js" defer></script>
+  </body>
+</html>

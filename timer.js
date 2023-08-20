@@ -1,7 +1,10 @@
 
 let targetTimeM = 20;
+let serviceInH = 23;
+let serviceInM = 7;
 
 const toPaddedStr = (num) => num.toString().padStart(2, '0');
+const trimToRangeCyclic = (value, upperBound) => (value + upperBound) % upperBound;
 
 const diffTime = (dateFuture, date) => {
     var diffSeconds = (dateFuture - date) / 1000;
@@ -12,13 +15,18 @@ const diffTime = (dateFuture, date) => {
     }
 };
 
-const increment = () => {
-    targetTimeM >= 99 ? 99 : ++targetTimeM;
+const adjustServiceInH = (step) => {
+    serviceInH = trimToRangeCyclic(serviceInH + step, 24);
     render();
-};
+}
 
-const decrement = () => {
-    targetTimeM <= 0 ? 0 : --targetTimeM;
+const adjustServiceInM = (step) => {
+    serviceInM = trimToRangeCyclic(serviceInM + step, 60);
+    render();
+}
+
+const adjustTargetTime = (step) => {
+    targetTimeM = trimToRangeCyclic(targetTimeM + step, 100);
     render();
 };
 
@@ -28,26 +36,20 @@ const render = () => {
     const cthours = toPaddedStr(ct.getHours());
     const ctminutes = toPaddedStr(ct.getMinutes());
     const ctseconds = toPaddedStr(ct.getSeconds());
-    document.getElementById("live-time").innerHTML = `${cthours}:${ctminutes}:${ctseconds}`;
+    document.getElementById("current-time").innerHTML = `${cthours}:${ctminutes}:${ctseconds}`;
 
     //service in
-    const serviceInH = 23;
-    const serviceInM = 7;
     const serviceIn = new Date(ct.getTime());
     serviceIn.setHours(serviceInH, serviceInM, 0);
-    const sinH = toPaddedStr(serviceIn.getHours());
-    const sinM = toPaddedStr(serviceIn.getMinutes());
-    document.getElementById("service-in").innerHTML = `${sinH}:${sinM}`;
+    document.getElementById("service-in").innerHTML = `${toPaddedStr(serviceInH)}:${toPaddedStr(serviceInM)}`;
 
     // target time
-    document.getElementById("target-time").innerHTML = `${targetTimeM}`;
+    document.getElementById("target-time").innerHTML = `${toPaddedStr(targetTimeM)}`;
 
     //servcie out
     const serviceOut = new Date(ct.getTime());
     serviceOut.setHours(serviceInH, serviceInM + targetTimeM, 0);
-    const soH = toPaddedStr(serviceOut.getHours());
-    const soM = toPaddedStr(serviceOut.getMinutes());
-    document.getElementById("service-out").innerHTML = `${soH}:${soM}`;
+    document.getElementById("service-out").innerHTML = `${toPaddedStr(serviceOut.getHours())}:${toPaddedStr(serviceOut.getMinutes())}`;
 
     //countdown
     let delta;
