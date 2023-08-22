@@ -1,22 +1,25 @@
 #app {
     font-family: ExoBold, Arial, sans-serif;
-    padding: 1em 1em 1em 1em;
+    color: black;
+    padding: 4em 3em 3em 4em;
 }
 
 #current-time {
-    font-size: 4em;
+    font-size: 4.5em;
     text-align: right;
     font-weight: bold;
 }
 
 #countdown {
-    font-size: 9em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    font-size: 12em;
     text-align: center;
     font-weight: bold;
 }
 
 #service-time {
-    padding-top: 2em;
+    padding-top: 1em;
     text-align: center;
     display: flex;
 }
@@ -26,11 +29,42 @@
 }
 
 #service-time .label {
-    font-size: 1.5em;
+    padding-bottom: 0.5em;
+    font-size: 2em;
 }
 
 #service-time .value {
-    font-size: 3em;
+    font-size: 4em;
+}
+
+.time-container {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.time-subcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.buttons {
+    display: flex;
+}
+
+.btn {
+    cursor: pointer;
+    border: unset;
+    background:transparent
+}
+
+.btn-img {
+    width: 1.5em;
+}
+
+#service-out {
+    padding-top: 0.3em;
 }
 
 @font-face {

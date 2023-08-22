@@ -5,8 +5,10 @@ let serviceInH = currentTime.getHours();
 let serviceInM = currentTime.getMinutes();
 
 const currentTimeDiv = document.getElementById("current-time");
-const serviceInDiv = document.getElementById("service-in");
-const targetTimeDiv = document.getElementById("target-time");
+const serviceInHoursDiv = document.getElementById("service-in-hours");
+const serviceInMinsDiv = document.getElementById("service-in-mins");
+const targetTimeFirstDiv = document.getElementById("target-time-first");
+const targetTimeSecondDiv = document.getElementById("target-time-second");
 const serviceOutDiv = document.getElementById("service-out");
 const countdownDiv = document.getElementById("countdown");
 
@@ -14,7 +16,7 @@ const toPaddedStr = (num) => num.toString().padStart(2, '0');
 const trimToRangeCyclic = (value, upperBound) => (value + upperBound) % upperBound;
 
 const diffTime = (dateFuture, date) => {
-    var diffSeconds = (dateFuture - date) / 1000;
+    const diffSeconds = (dateFuture - date) / 1000;
     return {
         hours: Math.floor((diffSeconds / 3600) % 24),
         minutes: Math.floor((diffSeconds / 60) % 60),
@@ -45,10 +47,12 @@ const render = () => {
     //service in
     const serviceIn = new Date(currentTime.getTime());
     serviceIn.setHours(serviceInH, serviceInM, 0);
-    serviceInDiv.innerHTML = `${toPaddedStr(serviceInH)}:${toPaddedStr(serviceInM)}`;
+    serviceInHoursDiv.innerHTML = toPaddedStr(serviceInH);
+    serviceInMinsDiv.innerHTML = toPaddedStr(serviceInM);
 
     // target time
-    targetTimeDiv.innerHTML = `${toPaddedStr(targetTimeM)}`;
+    targetTimeFirstDiv.innerHTML = Math.floor(targetTimeM / 10);
+    targetTimeSecondDiv.innerHTML = targetTimeM % 10;
 
     //servcie out
     const serviceOut = new Date(currentTime.getTime());

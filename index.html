@@ -13,26 +13,33 @@
         <div id="service-time">
             <div id="service-in-container">
                 <div class="label">Service in</div>
-                <div class="buttons" style="display: flex;">
-                    <div onclick="adjustServiceInH(1)" style="width: 50%"><img style="width: 1em" src="./assets/TriangleArrow-Up.svg" alt="up"/></div>
-                    <div onclick="adjustServiceInM(1)" style="width: 50%"><img style="width: 1em" src="./assets/TriangleArrow-Up.svg" alt="up"/></div>
-                </div>
-                <div id="service-in" class="value"></div>
-                <div class="buttons" style="display: flex;">
-                    <div onclick="adjustServiceInH(-1)" style="width: 50%"><img style="width: 1em; transform: rotate(180deg);" src="./assets/TriangleArrow-Up.svg" alt="down"/></div>
-                    <div onclick="adjustServiceInM(-1)" style="width: 50%"><img style="width: 1em; transform: rotate(180deg);" src="./assets/TriangleArrow-Up.svg" alt="down"/></div>
+                <div class="time-container">
+                    <div class="time-subcontainer">
+                        <button class="btn" onclick="adjustServiceInH(1)"><img class="btn-img" src="./assets/arrow.svg" alt="increment-hours"/></button>
+                        <div id="service-in-hours" class="value"></div>
+                        <button class="btn" style="transform: rotate(180deg)" onclick="adjustServiceInH(-1)"><img class="btn-img" src="./assets/arrow.svg" alt="decrement-hours"/></button>
+                    </div>
+                    <span class="value">:</span>
+                    <div class="time-subcontainer">
+                        <button class="btn" onclick="adjustServiceInM(1)"><img class="btn-img" src="./assets/arrow.svg" alt="increment-minutes"/></button>
+                        <div id="service-in-mins" class="value"></div>
+                        <button class="btn" style="transform: rotate(180deg)" onclick="adjustServiceInM(-1)"><img class="btn-img" src="./assets/arrow.svg" alt="decrement-minutes"/></button>
+                    </div>
                 </div>
             </div>
             <div id="target-time-container">
-                <div class="label">Target time </div>
-                <div class="buttons" style="display: flex;">
-                    <div onclick="adjustTargetTime(10)" style="width: 50%"><img style="width: 1em" src="./assets/TriangleArrow-Up.svg" alt="up"/></div>
-                    <div onclick="adjustTargetTime(1)" style="width: 50%"><img style="width: 1em" src="./assets/TriangleArrow-Up.svg" alt="up"/></div>
-                </div>
-                <div id="target-time" class="value"></div>
-                <div class="buttons" style="display: flex;">
-                    <div onclick="adjustTargetTime(-10)" style="width: 50%"><img style="width: 1em;transform: rotate(180deg);" src="./assets/TriangleArrow-Up.svg" alt="down"/></div>
-                    <div onclick="adjustTargetTime(-1)" style="width: 50%"><img style="width: 1em;transform: rotate(180deg);" src="./assets/TriangleArrow-Up.svg" alt="down"/></div>
+                <div class="label">Target time</div>
+                <div class="time-container">
+                    <div class="time-subcontainer">
+                        <button class="btn" onclick="adjustTargetTime(10)"><img class="btn-img" src="./assets/arrow.svg" alt="increment-minutes"/></button>
+                        <div id="target-time-first" class="value"></div>
+                        <button class="btn" style="transform: rotate(180deg)" onclick="adjustTargetTime(-10)"><img class="btn-img" src="./assets/arrow.svg" alt="decrement-minutes"/></button>
+                    </div>
+                    <div class="time-subcontainer">
+                        <button class="btn" onclick="adjustTargetTime(1)"><img class="btn-img" src="./assets/arrow.svg" alt="increment-minutes"/></button>
+                        <div id="target-time-second" class="value"></div>
+                        <button class="btn" style="transform: rotate(180deg)" onclick="adjustTargetTime(-1)"><img class="btn-img" src="./assets/arrow.svg" alt="decrement-minutes"/></button>
+                    </div>
                 </div>
             </div>
             <div id="service-out-container">
