@@ -1,7 +1,20 @@
+body {
+    margin: 0px;
+    height: 100%;
+}
+
 #app {
     font-family: ExoBold, Arial, sans-serif;
     color: black;
-    padding: 4em 4em 4em 4em;
+    padding-left: 5em;
+    padding-right: 5em;
+    margin: auto;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    block-size: fit-content;
 }
 
 #current-time {
@@ -11,8 +24,8 @@
 }
 
 #countdown {
-    padding-top: 0.3em;
-    padding-bottom: 0.3em;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
     font-size: 12em;
     text-align: center;
     font-weight: bold;
