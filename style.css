@@ -99,6 +99,30 @@ body {
     }
 }
 
+@media (min-width: 2500px) {
+    #current-time {
+        font-size: 8em;
+    }
+
+    #countdown {
+        padding-top: 10vh;
+        padding-bottom: 10vh;
+        font-size: 21em;
+    }
+
+    #service-time .label {
+        font-size: 4em;
+    }
+
+    #service-time .value {
+        font-size: 7em;
+    }
+
+    .btn-img {
+        width: 3.5em;
+    }
+}
+
 @font-face {
     font-family: ExoBold;
     src: url(./fonts/Exo-Bold.ttf);
