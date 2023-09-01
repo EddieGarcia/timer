@@ -61,20 +61,30 @@ const render = () => {
 
     //countdown
     let delta;
-    let color = "black";
+    let color = 'black';
+    let opacity = 1;
     if (currentTime < serviceIn) {
         delta = diffTime(serviceOut, serviceIn);
     } else {
         if (serviceOut <= currentTime) {
             delta = diffTime(currentTime, serviceOut);
-            color = "red";
+            color = '#CC0000';
         } else {
             delta = diffTime(serviceOut, currentTime);
+            if (delta.minutes < 5) {
+                color = "red";
+            }
+
+            if (delta.minutes < 2) {
+                opacity = (countdownDiv.style.opacity === '0.2' ? '1' : '0.2');
+            }
         }
     }
+
     countdownDiv.innerHTML = `${toPaddedStr(delta.hours)}:${toPaddedStr(delta.minutes)}:${toPaddedStr(delta.seconds)}`;
     countdownDiv.style.color = color;
+    countdownDiv.style.opacity = opacity;
 };
 
 render();
-setInterval(() => render(), 1000);
+setInterval(() => render(), 500);
