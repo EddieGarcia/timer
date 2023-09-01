@@ -79,6 +79,26 @@ body {
     padding-top: 0.3em;
 }
 
+@media (max-height: 700px) {
+    #current-time {
+        font-size: 3em;
+    }
+
+    #countdown {
+        padding-top: 1.5vh;
+        padding-bottom: 1.5vh;
+        font-size: 8em;
+    }
+
+    #service-time .label {
+        font-size: 1.5em;
+    }
+
+    #service-time .value {
+        font-size: 3em;
+    }
+}
+
 @font-face {
     font-family: ExoBold;
     src: url(./fonts/Exo-Bold.ttf);
