@@ -1,6 +1,5 @@
 # Timer app
-Simple timer application
-Webpage: https://eddiegarcia.github.io/timer
+Simple timer application https://eddiegarcia.github.io/timer
 
 ## How to run locally?
 - Download repo as zip
