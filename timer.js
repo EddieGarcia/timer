@@ -4,13 +4,13 @@ const currentTime = new Date();
 let serviceInH = currentTime.getHours();
 let serviceInM = currentTime.getMinutes();
 
-const currentTimeDiv = document.getElementById("current-time");
-const serviceInHoursDiv = document.getElementById("service-in-hours");
-const serviceInMinsDiv = document.getElementById("service-in-mins");
-const targetTimeFirstDiv = document.getElementById("target-time-first");
-const targetTimeSecondDiv = document.getElementById("target-time-second");
-const serviceOutDiv = document.getElementById("service-out");
-const countdownDiv = document.getElementById("countdown");
+const currentTimeDiv = document.getElementById('current-time');
+const serviceInHoursDiv = document.getElementById('service-in-hours');
+const serviceInMinsDiv = document.getElementById('service-in-mins');
+const targetTimeFirstDiv = document.getElementById('target-time-first');
+const targetTimeSecondDiv = document.getElementById('target-time-second');
+const serviceOutDiv = document.getElementById('service-out');
+const countdownDiv = document.getElementById('countdown');
 
 const toPaddedStr = (num) => num.toString().padStart(2, '0');
 const trimToRangeCyclic = (value, upperBound) => (value + upperBound) % upperBound;
@@ -72,7 +72,7 @@ const render = () => {
         } else {
             delta = diffTime(serviceOut, currentTime);
             if (delta.minutes < 5) {
-                color = "red";
+                color = 'red';
             }
 
             if (delta.minutes < 2) {
