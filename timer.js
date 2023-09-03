@@ -109,6 +109,9 @@ const setBackground = () => backgroundSelectInput.click();
 const clearBackground = () => {
     document.body.style.backgroundImage = null;
     backgroundSelectInput.value = null;
+    if (defaultFontColor !== 'black') {
+        toggleFontColor();
+    }
 }
 
 const backgroundFileChange = () => {
