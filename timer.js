@@ -65,19 +65,17 @@ const render = () => {
     let opacity = 1;
     if (currentTime < serviceIn) {
         delta = diffTime(serviceOut, serviceIn);
+    } else if (serviceOut <= currentTime) {
+        delta = diffTime(currentTime, serviceOut);
+        color = '#CC0000';
     } else {
-        if (serviceOut <= currentTime) {
-            delta = diffTime(currentTime, serviceOut);
-            color = '#CC0000';
-        } else {
-            delta = diffTime(serviceOut, currentTime);
-            if (delta.minutes < 5) {
-                color = 'red';
-            }
+        delta = diffTime(serviceOut, currentTime);
+        if (delta.minutes < 5) {
+            color = 'red';
+        }
 
-            if (delta.minutes < 2) {
-                opacity = (countdownDiv.style.opacity === '0.2' ? '1' : '0.2');
-            }
+        if (delta.minutes < 2) {
+            opacity = (countdownDiv.style.opacity === '0.2' ? '1' : '0.2');
         }
     }
 
