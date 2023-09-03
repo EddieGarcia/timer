@@ -46,6 +46,12 @@
                 <div id="service-out" class="value"></div>
             </div>
         </div>
+        <div id="ctrlPanel">
+            <button class="btn" onclick="toggleFontColor()"><img class="btn-img" src="./assets/change.svg" alt="toggle font color"/></button>
+            <input id="backgroundSelect" accept="image/*" type='file' style="display: none" onchange="backgroundFileChange()"/>
+            <button class="btn" onclick="setBackground()"><img class="btn-img" src="./assets/image.svg" alt="choose background"/></button>
+            <button class="btn" onclick="clearBackground()"><img class="btn-img" src="./assets/delete.svg" alt="erase background"/></button>
+        </div>
     </div>
   </body>
 </html>

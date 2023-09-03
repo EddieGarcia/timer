@@ -4,6 +4,9 @@ const currentTime = new Date();
 let serviceInH = currentTime.getHours();
 let serviceInM = currentTime.getMinutes();
 
+let defaultFontColor = 'black';
+
+const appDiv = document.getElementById('app');
 const currentTimeDiv = document.getElementById('current-time');
 const serviceInHoursDiv = document.getElementById('service-in-hours');
 const serviceInMinsDiv = document.getElementById('service-in-mins');
@@ -11,6 +14,8 @@ const targetTimeFirstDiv = document.getElementById('target-time-first');
 const targetTimeSecondDiv = document.getElementById('target-time-second');
 const serviceOutDiv = document.getElementById('service-out');
 const countdownDiv = document.getElementById('countdown');
+const backgroundSelectInput = document.getElementById('backgroundSelect');
+const buttonImages = document.querySelectorAll('.btn-img');
 
 const toPaddedStr = (num) => num.toString().padStart(2, '0');
 const trimToRangeCyclic = (value, upperBound) => (value + upperBound) % upperBound;
@@ -44,7 +49,7 @@ const render = () => {
     const currentTime = new Date();
     currentTimeDiv.innerHTML = `${toPaddedStr(currentTime.getHours())}:${toPaddedStr(currentTime.getMinutes())}:${toPaddedStr(currentTime.getSeconds())}`;
 
-    //service in
+    // service in
     const serviceIn = new Date(currentTime.getTime());
     serviceIn.setHours(serviceInH, serviceInM, 0);
     serviceInHoursDiv.innerHTML = toPaddedStr(serviceInH);
@@ -54,14 +59,14 @@ const render = () => {
     targetTimeFirstDiv.innerHTML = Math.floor(targetTimeM / 10);
     targetTimeSecondDiv.innerHTML = targetTimeM % 10;
 
-    //servcie out
+    // service out
     const serviceOut = new Date(currentTime.getTime());
     serviceOut.setHours(serviceInH, serviceInM + targetTimeM, 0);
     serviceOutDiv.innerHTML = `${toPaddedStr(serviceOut.getHours())}:${toPaddedStr(serviceOut.getMinutes())}`;
 
-    //countdown
+    // countdown
     let delta;
-    let color = 'black';
+    let color = defaultFontColor;
     let opacity = 1;
     if (currentTime < serviceIn) {
         delta = diffTime(serviceOut, serviceIn);
@@ -82,6 +87,35 @@ const render = () => {
     countdownDiv.innerHTML = `${toPaddedStr(delta.hours)}:${toPaddedStr(delta.minutes)}:${toPaddedStr(delta.seconds)}`;
     countdownDiv.style.color = color;
     countdownDiv.style.opacity = opacity;
+};
+
+const toggleFontColor = () => {
+    let invert;
+    if (defaultFontColor === 'black') {
+        defaultFontColor = '#FAFAFA';
+        invert = 'invert(1)';
+    } else {
+        defaultFontColor = 'black';
+        invert = null;
+    }
+    appDiv.style.color = defaultFontColor;
+
+    for (const btnImage of buttonImages) {
+        btnImage.style.filter = invert;
+    }
+};
+
+const setBackground = () => backgroundSelectInput.click();
+const clearBackground = () => {
+    document.body.style.backgroundImage = null;
+    backgroundSelectInput.value = null;
+}
+
+const backgroundFileChange = () => {
+    const [file] = backgroundSelectInput.files
+    if (file) {
+        document.body.style.backgroundImage = `url(${URL.createObjectURL(file)}`;
+    }
 };
 
 render();

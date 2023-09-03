@@ -1,6 +1,10 @@
 body {
     margin: 0px;
     height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 #app {
@@ -68,18 +72,24 @@ body {
 .btn {
     cursor: pointer;
     border: unset;
-    background:transparent
+    background: transparent
 }
 
 .btn-img {
-    width: 1.5em;
+    width: 2em;
 }
 
 #service-out {
     padding-top: 0.3em;
 }
 
-@media (max-height: 700px) {
+#ctrlPanel {
+    margin-top: 1.5em;
+    text-align: right;
+    opacity: 50%;
+}
+
+@media (max-height: 720px) {
     #current-time {
         font-size: 3em;
     }
@@ -99,19 +109,19 @@ body {
     }
 }
 
-@media (min-width: 2500px) {
+@media (min-height: 1220px) {
     #current-time {
-        font-size: 8em;
+        font-size: 7em;
     }
 
     #countdown {
-        padding-top: 12vh;
-        padding-bottom: 12vh;
+        padding-top: 11vh;
+        padding-bottom: 11vh;
         font-size: 21em;
     }
 
     #service-time .label {
-        font-size: 4em;
+        font-size: 3em;
     }
 
     #service-time .value {
@@ -119,7 +129,7 @@ body {
     }
 
     .btn-img {
-        width: 3.5em;
+        width: 3em;
     }
 }
 
